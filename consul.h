@@ -1,3 +1,9 @@
+/*
+ * Copyright 2020 The Wazo Authors  (see the AUTHORS file)
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
+
+
 #include <curl/curl.h>
 #include <jansson.h>
 

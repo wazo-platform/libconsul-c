@@ -1,3 +1,8 @@
+/*
+ * Copyright 2020 The Wazo Authors  (see the AUTHORS file)
+ * SPDX-License-Identifier: BSD-2-Clause
+ */
+
 #include "consul.h"
 
 #include <jansson.h>
