@@ -7,7 +7,7 @@ Standards-Version: 3.9.6
 
 Package: libconsul-c
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, libjansson-dev, libcurl4-openssl-dev
 Description: C binding Consul client library
  Connects to a Consul server for service discovering.
  .
@@ -15,7 +15,7 @@ Description: C binding Consul client library
 Package: wazo-res-consul-dev
 Architecture: all
 Section: devel
-Depends: ${misc:Depends}
+Depends: ${misc:Depends}, libjansson-dev, libcurl4-openssl-dev
 Description: C binding Consul client library
  Connects to a Consul server for service discovering.
  .

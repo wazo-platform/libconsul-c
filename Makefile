@@ -9,7 +9,7 @@
 #
 
 INSTALL = install
-DESTDIR = /usr/lib
+DESTLIB = /usr/lib
 
 TARGET = libconsul-c.so
 OBJECTS = client.o request.o server.o watcher.o base64.o service.o
@@ -29,7 +29,7 @@ $(TARGET): $(OBJECTS)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 install: $(TARGET)
-	install -m 755 $(TARGET) $(DESTDIR)
+	install -m 755 $(TARGET) $(DESTDIR)$(DESTLIB)
 clean:
 	rm -f $(OBJECTS)
 	rm -f $(TARGET)
