@@ -12,7 +12,7 @@ Description: C binding Consul client library
  Connects to a Consul server for service discovering.
  .
 
-Package: wazo-res-consul-dev
+Package: libconsul-c-dev
 Architecture: all
 Section: devel
 Depends: ${misc:Depends}, libjansson-dev, libcurl4-openssl-dev
