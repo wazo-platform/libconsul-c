@@ -29,6 +29,7 @@ $(TARGET): $(OBJECTS)
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 install: $(TARGET)
+	mkdir -p $(DESTDIR)$(DESTLIB)
 	install -m 755 $(TARGET) $(DESTDIR)$(DESTLIB)
 clean:
 	rm -f $(OBJECTS)
