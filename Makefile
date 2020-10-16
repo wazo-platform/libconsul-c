@@ -10,7 +10,7 @@
 
 INSTALL = install
 DESTLIB = /usr/lib
-DESTHEADER = /usr/include
+DESTHEADER = /usr/include/consul
 
 TARGET = libconsul-c.so
 TARGETHEADER = consul.h
