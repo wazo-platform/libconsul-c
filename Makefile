@@ -10,8 +10,10 @@
 
 INSTALL = install
 DESTLIB = /usr/lib
+DESTHEADER = /usr/include
 
 TARGET = libconsul-c.so
+TARGETHEADER = consul.h
 OBJECTS = client.o request.o server.o watcher.o base64.o service.o
 CFLAGS += -I.
 CFLAGS += -DHAVE_STDINT_H=1
@@ -30,7 +32,9 @@ $(TARGET): $(OBJECTS)
 
 install: $(TARGET)
 	mkdir -p $(DESTDIR)$(DESTLIB)
+	mkdir -p $(DESTDIR)$(DESTHEADER)
 	install -m 755 $(TARGET) $(DESTDIR)$(DESTLIB)
+	install -m 755 $(TARGETHEADER) $(DESTDIR)$(DESTHEADER)
 clean:
 	rm -f $(OBJECTS)
 	rm -f $(TARGET)
