@@ -12,7 +12,7 @@ INSTALL = install
 DESTLIB = /usr/lib
 DESTHEADER = /usr/include/consul
 
-TARGET = libconsul-c.so
+TARGET = libconsul-c.so.0
 TARGETHEADER = consul.h
 OBJECTS = client.o request.o server.o watcher.o base64.o service.o
 CFLAGS += -I.
@@ -25,7 +25,7 @@ LDFLAGS = -Wall -ljansson -shared
 .PHONY: install clean
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(LDFLAGS) $(OBJECTS) -o $@ $(LIBS)
+	$(CC) $(LDFLAGS) -Wl,-soname,libconsul-c.so.0 $(OBJECTS) -o $@ $(LIBS)
 
 %.o: %.c $(HEADERS)
 	$(CC) -c $(CFLAGS) -o $@ $<
