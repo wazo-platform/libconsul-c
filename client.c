@@ -37,11 +37,18 @@ void consul_client_setup_user(consul_client_t* client, const char *user, const c
     client->settings.user = strdup(user);
 }
 
+void consul_client_setup_token(consul_client_t* client, const char *token) {
+    client->settings.token = strdup(token);
+}
+
 void consul_client_destroy(consul_client_t* client) {
     int i = 0;
 
     if (client->settings.user) {
         free(client->settings.user);
+    }
+    if (client->settings.token) {
+        free(client->settings.token);
     }
 
     for (i = 0; i < client->server_count; i++) {

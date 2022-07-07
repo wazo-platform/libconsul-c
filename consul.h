@@ -78,6 +78,7 @@ typedef struct consul_client_t {
         char*    user;
         char*    password;
         char*    scheme;
+        char*    token;
     } settings;
 } consul_client_t;
 
@@ -153,6 +154,7 @@ void consul_server_cleanup(consul_server_t* server);
 
 consul_client_t* consul_client_create(int server_count, const char** servers);
 void consul_client_setup_user(consul_client_t* client, const char *user, const char *password);
+void consul_client_setup_token(consul_client_t* client, const char *token);
 void consul_client_destroy(consul_client_t* client);
 consul_response_t *consul_client_lsdir(consul_client_t *cli, const char *key, int recursive);
 consul_response_t* consul_cluster_request(consul_client_t* client, consul_request_t* req);
