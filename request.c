@@ -18,6 +18,8 @@ static const char *http_method[] = {
     "OPTION"
 };
 
+struct curl_slist *curl_headers;
+
 CURLU* consul_url_create(int version, enum CONSUL_API_TYPE type, const char *path) {
     CURLU *url;
     CURLMcode rc;
@@ -147,6 +149,14 @@ void consul_request_setopt(consul_request_t* req, consul_response_t* resp, CURL 
     if (req->client->settings.password) {
         curl_easy_setopt(curl, CURLOPT_PASSWORD, req->client->settings.password);
     }
+    if (req->client->settings.token) {
+        char token_header[256+16];
+
+        snprintf(token_header, 256+16, "X-Consul-Token: %s", req->client->settings.token);
+        curl_headers = curl_slist_append(NULL, token_header);
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, curl_headers);
+        curl_easy_setopt(curl, CURLOPT_HEADEROPT, CURLHEADER_SEPARATE);
+    }
 
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 
@@ -267,6 +277,7 @@ void consul_request_set_server(consul_request_t* request, consul_server_t* serve
 }
 
 void consul_request_cleanup(consul_request_t* request) {
+    curl_slist_free_all(curl_headers);
     curl_easy_cleanup(request->curl);
     if (request->data)
         free((void*) request->data);
