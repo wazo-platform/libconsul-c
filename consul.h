@@ -113,6 +113,8 @@ typedef struct consul_response_t {
 typedef struct consul_check_t {
     const char *http;
     int interval;
+    const char *tls_server_name;
+    int tls_skip_verify;
 } consul_check_t;
 
 typedef struct consul_service_t {

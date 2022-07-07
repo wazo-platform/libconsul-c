@@ -32,7 +32,8 @@ static json_t* strings_to_json_dict(const char** strings) {
 static json_t* check_to_json_dict(consul_check_t *check) {
     char interval[32];
     snprintf(interval, 32, "%ds", check->interval);
-    return json_pack("{s:s?,s:s}", "HTTP", check->http, "Interval", interval);
+    return json_pack("{s:s?,s:s,s:s?,s:b}", "HTTP", check->http, "Interval", interval,
+                     "TLSServerName",check->tls_server_name, "TLSSkipVerify", check->tls_skip_verify);
 }
 
 static json_t* checks_to_json_array(consul_check_t **checks) {
